@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE resources [
+    <!ENTITY pass_symbol "4">
+
+    ]>
+
+<resources>
+    <string name="app_name">Тестова система</string>
+
+    <string name="email_hint">Email адрес</string>
+    <string name="pass_hint">Парола</string>
+    <string name="logIn_button">Вписване</string>
+    <string name="register_button">Регистрация</string>
+    <string name="admin_panel">Админ панел</string>
+    <string name="student_panel">Студентски панел</string>
+    <string name="time_left_label">Оставащо време: </string>
+    <string name="result_text">Резултат</string>
+    <string name="results_text">Резултати</string>
+    <string name="correct_label">Верни: </string>
+    <string name="wrong_label">Грешни: </string>
+    <string name="percentage_label">Успеваемост: </string>
+    <string name="time_left">00:00</string>
+    <string name="test_end_button">Край на теста</string>
+    <string name="answer_hint">Вашият отговор</string>
+
+
+    // Buttons
+    <string name="print_button">Принтирай</string>
+    <string name="begin_button">Начало</string>
+    <string name="answer_button">Отговори</string>
+    <string name="submit_button">Приключи тест</string>
+    <string name="next_button">Следващ</string>
+    <string name="addQuestion_button">Добави въпрос</string>
+    <string name="reference_button">Справка</string>
+    <string name="testButton">Тест</string>
+    <string name="timedTestButton">Тест с време</string>
+
+
+    // Errors
+    <string name="invalid_email_format">"Моля въведете валиден email адрес"</string>
+    <string name="invalid_password_format">"Моля въведете парола по дълга от &pass_symbol; символа"</string>
+
+
+</resources>
