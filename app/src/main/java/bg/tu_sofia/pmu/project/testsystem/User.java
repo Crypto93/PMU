@@ -1,7 +1,7 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
 /**
- * Created by Altair on 8.6.2016 г..
+ * Created by Stefan Chuklev on 8.6.2016 г..
  */
 public class User {
     public static enum UserType {
