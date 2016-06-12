@@ -100,6 +100,7 @@ interface DBConstants {
             ");";
 
     static final String SELECT_USER = "SELECT * FROM " + USERS_TABLE + " WHERE " + USERNAME + " =?";
+    static final String SELECT_CATEGORIES = "SELECT * FROM " + CATEGORIES_TABLE;
 
 
 }
