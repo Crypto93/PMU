@@ -1,7 +1,6 @@
 package bg.tu_sofia.pmu.project.testsystem.persistence;
 
 import android.content.Context;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -11,11 +10,8 @@ import android.util.Log;
  */
 class DBHelper extends SQLiteOpenHelper implements DBConstants {
 
-    protected SQLiteDatabase db = null;
-
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        open();
     }
 
     @Override
@@ -38,14 +34,6 @@ class DBHelper extends SQLiteOpenHelper implements DBConstants {
         db.execSQL("DROP TABLE IF EXISTS " + RESULTS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TESTS_TABLE);
         onCreate(db);
-    }
-
-    public void open() throws SQLException {
-        db = getWritableDatabase();
-    }
-
-    public void close() {
-        db.close();
     }
 
 }

@@ -9,6 +9,7 @@
 
     <string name="email_hint">Email адрес</string>
     <string name="pass_hint">Парола</string>
+    <string name="pass_confirm_hint">Повторете паролата</string>
     <string name="admin_panel">Админ панел</string>
     <string name="student_panel">Студентски панел</string>
     <string name="time_left_label">Оставащо време: </string>
@@ -20,6 +21,13 @@
     <string name="time_left">00:00</string>
     <string name="answer_hint">Вашият отговор</string>
     <string name="catlabel">Категория: </string>
+
+    // Messages
+    <string name="successfull_registration">Успешна регистрация!</string>
+    <string name="unsuccessfull_registration">Неуспешна регистрация</string>
+    <string name="existing_email_error">"Вече съществува потребител с това потребителско име/email"</string>
+    <string name="wrong_username_or_password">"Грешен email или парола"</string>
+    <string name="successfull_login">"Успешно влизане в системата."</string>
 
 
     // Buttons
@@ -40,6 +48,7 @@
     // Errors
     <string name="invalid_email_format">"Моля въведете валиден email адрес"</string>
     <string name="invalid_password_format">"Моля въведете парола по дълга от &pass_symbol; символа"</string>
+    <string name="passwords_does_not_match">"Паролите не съпадат"</string>
 
 
 </resources>

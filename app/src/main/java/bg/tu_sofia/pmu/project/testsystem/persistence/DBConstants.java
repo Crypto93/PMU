@@ -59,7 +59,7 @@ interface DBConstants {
     static final String CREATE_USER_TABLE = "CREATE TABLE " + USERS_TABLE + " (" +
             USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             USERNAME + " VARCHAR(30), " +
-            USER_PASSWORD + " VARCHAR(64)" +
+            USER_PASSWORD + " VARCHAR(64), " +
             IS_ADMIN + " BOOLEAN DEFAULT " + ADMIN_FALSE +
             ");";
 
@@ -93,8 +93,10 @@ interface DBConstants {
             QUESTION_ANSWER_CORRECT + " TEXT, " +
             QUESTION_ANSWER_1 + " TEXT, " +
             QUESTION_ANSWER_2 + " TEXT, " +
-            QUESTION_ANSWER_3 + " TEXT, " +
+            QUESTION_ANSWER_3 + " TEXT" +
             ");";
+
+    static final String SELECT_USER = "SELECT * FROM " + USERS_TABLE + " WHERE " + USERNAME + " =?";
 
 
 }

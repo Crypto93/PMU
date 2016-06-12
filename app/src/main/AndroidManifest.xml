@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".ClosedAnswerQuestionActivity" >
         </activity>
+        <activity android:name=".RegisterActivity" >
+        </activity>
     </application>
 
 </manifest>

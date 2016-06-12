@@ -8,20 +8,22 @@ public class User {
         ADMIN, STUDENT
     }
 
-    public static User createStudentUser(String username) {
-        return new User(username, UserType.STUDENT);
+    public static User createStudentUser(String username, String password) {
+        return new User(username, password, UserType.STUDENT);
     }
 
-    public static User createAdminUser(String username) {
-        return new User(username, UserType.ADMIN);
+    public static User createAdminUser(String username, String password) {
+        return new User(username, password, UserType.ADMIN);
     }
 
     private String username = null;
+    private String password = null;
     private UserType userType = null;
 
-    private User(String username, UserType userType) {
+    private User(String username, String password, UserType userType) {
         this.username = username;
         this.userType = userType;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -31,6 +33,8 @@ public class User {
     public UserType getUserType() {
         return userType;
     }
+
+    public String getPassword() { return password; }
 
     public void setUserType(UserType userType) {
         this.userType = userType;
