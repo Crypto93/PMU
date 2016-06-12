@@ -63,8 +63,15 @@ public class LogInActivity extends AppCompatActivity {
         registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< 949564b51bfe7ade30be883d09f65003229e4008
                 Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
                 LogInActivity.this.startActivityForResult(intent, 0);
+||||||| merged common ancestors
+
+=======
+                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
+                LogInActivity.this.startActivity(intent);
+>>>>>>> Added LogIn and Register functionalities
             }
         });
     }
