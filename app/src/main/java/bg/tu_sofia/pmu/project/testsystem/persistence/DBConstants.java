@@ -36,6 +36,7 @@ interface DBConstants {
     static final String QUESTIONS_TABLE = "QUESTIONS";
     static final String QUESTION_ID = "_id";
     static final String QUESTION_TYPE = "type";
+    static final String QUESTION_CATEGORY = "cat_id";
     static final String QUESTION_TEXT = "text";
     static final String QUESTION_ANSWER_CORRECT = "ans_correct";
     static final String QUESTION_ANSWER_1 = "ans_1";
@@ -90,10 +91,12 @@ interface DBConstants {
             QUESTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             QUESTION_TEXT + " TEXT NOT NULL, " +
             QUESTION_TYPE + " TINYINT NOT NULL, " +
+            QUESTION_CATEGORY + " INTEGER, " +
             QUESTION_ANSWER_CORRECT + " TEXT, " +
             QUESTION_ANSWER_1 + " TEXT, " +
             QUESTION_ANSWER_2 + " TEXT, " +
-            QUESTION_ANSWER_3 + " TEXT" +
+            QUESTION_ANSWER_3 + " TEXT, " +
+            "FOREIGN KEY(" + QUESTION_CATEGORY + ") REFERENCES " + CATEGORIES_TABLE + "("+ CATEGORY_ID +")" +
             ");";
 
     static final String SELECT_USER = "SELECT * FROM " + USERS_TABLE + " WHERE " + USERNAME + " =?";
