@@ -12,6 +12,9 @@ interface DBConstants {
     static final String CHECKED_TRUE = "1";
     static final String CHECKED_FALSE = "0";
 
+    static final String ADMIN_TRUE = "1";
+    static final String ADMIN_FALSE = "0";
+
     static final String OPEN_TYPE_QUESTION = "1";
     static final String CLOSED_TYPE_QUESTION = "0";
 
@@ -20,6 +23,7 @@ interface DBConstants {
     static final String USER_ID = "_id";
     static final String USERNAME = "username";
     static final String USER_PASSWORD = "pass";
+    static final String IS_ADMIN = "isAdmin";
 
     //RESULTS table
     static final String RESULTS_TABLE = "RESULTS";
@@ -56,6 +60,7 @@ interface DBConstants {
             USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             USERNAME + " VARCHAR(30), " +
             USER_PASSWORD + " VARCHAR(64)" +
+            IS_ADMIN + " BOOLEAN DEFAULT " + ADMIN_FALSE +
             ");";
 
     static final String CREATE_RESULTS_TABLE = "CREATE TABLE " + RESULTS_TABLE +
@@ -71,8 +76,7 @@ interface DBConstants {
     static final String CREATE_TESTS_TABLE = "CREATE TABLE " + TESTS_TABLE + " (" +
             TEST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             TEST_POINTS + " INTEGER, " +
-            TEST_CHECKED + " BOOLEAN DEFAULT " +
-            CHECKED_FALSE + ", " +
+            TEST_CHECKED + " BOOLEAN DEFAULT " + CHECKED_FALSE + ", " +
             TEST_OBJECT + "BLOB, " +
             TEST_DATETIME + " DATETIME DEFAULT CURRENT_TIMESTAMP" +
             ");";
