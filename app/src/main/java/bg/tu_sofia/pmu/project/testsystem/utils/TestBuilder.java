@@ -2,9 +2,10 @@ package bg.tu_sofia.pmu.project.testsystem.utils;
 
 import android.content.Context;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.UUID;
 
+import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
 import bg.tu_sofia.pmu.project.testsystem.persistence.QuestionsDataSource;
 
 /**
@@ -12,15 +13,21 @@ import bg.tu_sofia.pmu.project.testsystem.persistence.QuestionsDataSource;
  */
 public class TestBuilder {
 
-    public static Test generateTest(Context ctx, int categoryId, int closedQuestionsNumber, int openQuestionsNumber) {
+    public static Test generateTest(Context ctx, String category, int closedQuestionsNumber, int openQuestionsNumber) {
+        CategoriesDataSource cds = new CategoriesDataSource(ctx);
         QuestionsDataSource qds = new QuestionsDataSource(ctx);
-        ArrayList<Question> questions = qds.getTestQuestions(closedQuestionsNumber, openQuestionsNumber, categoryId);
+
+        int categoryId = cds.getCategoryID(category);
+
+        LinkedList<Question> questions = qds.getTestQuestions(closedQuestionsNumber, openQuestionsNumber, categoryId);
 
         Test test = new Test();
         test.setUserID(CacheControler.getInstance().getUser().getUserID());
         test.setTestID(UUID.randomUUID().toString());
         test.setChecked(false);
         test.setQuestions(questions);
+
+        CacheControler.getInstance().setCurrentTest(test);
 
         return test;
     }

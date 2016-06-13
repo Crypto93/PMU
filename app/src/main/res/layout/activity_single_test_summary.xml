@@ -96,8 +96,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/begin_button"
-        android:id="@+id/begin_button"
+        android:text="@string/home_button"
+        android:id="@+id/home_button"
         android:layout_below="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
         android:layout_toEndOf="@+id/imageView" />

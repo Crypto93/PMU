@@ -8,9 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
-import bg.tu_sofia.pmu.project.testsystem.utils.ClosedTypeQuestion;
-import bg.tu_sofia.pmu.project.testsystem.utils.OpenTypeQuestion;
 import bg.tu_sofia.pmu.project.testsystem.utils.Question;
 
 /**
@@ -50,8 +49,8 @@ public class QuestionsDataSource implements DBConstants {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public ArrayList<Question> getTestQuestions(int closedQuestionsNumber, int openQuestionsNumber, int catId) {
-        ArrayList<Question> questions = new ArrayList<>();
+    public LinkedList<Question> getTestQuestions(int closedQuestionsNumber, int openQuestionsNumber, int catId) {
+        LinkedList<Question> questions = new LinkedList<>();
 
         try (Cursor res = getClosedQuestionByCategory(catId, closedQuestionsNumber)) {
             while (res.moveToNext()) {
@@ -68,7 +67,7 @@ public class QuestionsDataSource implements DBConstants {
                 answers.add(answer3);
 
 
-                Question question = new ClosedTypeQuestion(questionText, correctAnswer, answers);
+                Question question = Question.createClosedTypeQuestion(questionText, correctAnswer, answers);
 
                 questions.add(question);
             }
@@ -78,7 +77,7 @@ public class QuestionsDataSource implements DBConstants {
             while (res.moveToNext()) {
                 String questionText = res.getString(res.getColumnIndex(QUESTION_TEXT));
 
-                Question question = new OpenTypeQuestion(questionText);
+                Question question = Question.createOpenTypeQuestion(questionText);
 
                 questions.add(question);
             }

@@ -1,16 +1,17 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
+import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
 public class StudentActivity extends AppCompatActivity {
 
@@ -24,13 +25,16 @@ public class StudentActivity extends AppCompatActivity {
 
     private void init() {
 
-        populateCattegoriesSpinner();
+        populateCategoriesSpinner();
 
         Button testButton = (Button) findViewById(R.id.testButton);
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(StudentActivity.this, getChosenCategory(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(StudentActivity.this, QuestionActivity.class);
+                intent.putExtra(TestSystemConstants.CATEGORY_KEY, getChosenCategory());
+                intent.putExtra(TestSystemConstants.IS_TIMED_KEY, TestSystemConstants.NON_TIMED_TEST);
+                StudentActivity.this.startActivity(intent);
             }
         });
 
@@ -38,13 +42,16 @@ public class StudentActivity extends AppCompatActivity {
         timedTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(StudentActivity.this, QuestionActivity.class);
+                intent.putExtra(TestSystemConstants.CATEGORY_KEY, getChosenCategory());
+                intent.putExtra(TestSystemConstants.IS_TIMED_KEY, TestSystemConstants.TIMED_TEST);
+                StudentActivity.this.startActivity(intent);
             }
         });
 
     }
 
-    private void populateCattegoriesSpinner() {
+    private void populateCategoriesSpinner() {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         CategoriesDataSource catDS = new CategoriesDataSource(this);
         ArrayList<String> catList = catDS.getCattegories();

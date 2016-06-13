@@ -1,9 +1,9 @@
 package bg.tu_sofia.pmu.project.testsystem.utils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Map;
 public class Test implements Serializable {
 
     public static enum QUESTION_STATUS {
-        UNANSWERED, CORRECT, WRONG, NOT_RATED_OPEN_QUESTION
+        CORRECT, WRONG, NOT_RATED_OPEN_QUESTION
     }
 
     public static enum TestType {
@@ -20,6 +20,7 @@ public class Test implements Serializable {
     }
 
     private HashMap<Question, QUESTION_STATUS> questions;
+    private LinkedList<Question> unansweredQuestions;
 
     private String testID;
     private long takenOn;
@@ -29,18 +30,22 @@ public class Test implements Serializable {
     private int wrongAnswers;
     private boolean isTimed;
 
+    public Test() {
+        questions = new HashMap<>();
+    }
 
     public void addQuestion(Question q) {
-        questions.put(q, QUESTION_STATUS.UNANSWERED);
+        unansweredQuestions.add(q);
     }
 
     public void answerQuestion(Question q, String answer) {
-        if (q instanceof ClosedTypeQuestion) {
+        if (q.getCorrectAnswer() != null) {
             if (q.getCorrectAnswer().equals(answer))
                 questions.put(q, QUESTION_STATUS.CORRECT);
             else
                 questions.put(q, QUESTION_STATUS.WRONG);
         } else {
+            q.setOpenAnswer(answer);
             questions.put(q, QUESTION_STATUS.NOT_RATED_OPEN_QUESTION);
         }
     }
@@ -57,18 +62,18 @@ public class Test implements Serializable {
         }
     }
 
-    public ArrayList<Question> getOpenQuestions() {
-        ArrayList<Question> list = new ArrayList<>();
-        Iterator it = questions.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            if (pair.getValue() == QUESTION_STATUS.NOT_RATED_OPEN_QUESTION) {
-                list.add((Question) pair.getKey());
-            }
-        }
-
-        return list;
-    }
+//    public ArrayList<Question> getOpenQuestions() {
+//        ArrayList<Question> list = new ArrayList<>();
+//        Iterator it = questions.entrySet().iterator();
+//        while(it.hasNext()) {
+//            Map.Entry pair = (Map.Entry)it.next();
+//            if (pair.getValue() == QUESTION_STATUS.NOT_RATED_OPEN_QUESTION) {
+//                list.add((Question) pair.getKey());
+//            }
+//        }
+//
+//        return list;
+//    }
 
     public void openQuestionCheck(Question q, boolean isCorrect) {
         if (isCorrect) {
@@ -81,14 +86,12 @@ public class Test implements Serializable {
 
     }
 
-    public void setQuestions(HashMap<Question, QUESTION_STATUS> questions) {
-        this.questions = questions;
+    public void setQuestions(LinkedList<Question> questions) {
+        unansweredQuestions = questions;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
-        for (Question q : questions) {
-            addQuestion(q);
-        }
+    public LinkedList<Question> getUnansweredQuestions() {
+        return unansweredQuestions;
     }
 
     public void setTestID(String testID) {

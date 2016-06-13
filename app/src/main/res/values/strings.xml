@@ -45,11 +45,15 @@
     <string name="add_question_failure">"Грешка. Въпросът не беше добавен."</string>
     <string name="add_category_success">"Категорията беше добавена успешно."</string>
     <string name="add_category_failure">"Грешка. Категорията не беше добавена."</string>
+    <string name="times_up_label">Времето ви изтече</string>
+    <string name="times_up_message">Ще бъдете пренасочени към страницата с резултати.</string>
+    <string name="all_answered">Всички въпроси са отговорени</string>
 
 
     // Buttons
     <string name="print_button">Принтирай</string>
-    <string name="begin_button">Начало</string>
+    <string name="ok_button">Добре</string>
+    <string name="home_button">Начало</string>
     <string name="answer_button">Отговори</string>
     <string name="submit_button">Приключи тест</string>
     <string name="next_button">Следващ</string>

@@ -7,6 +7,7 @@ public class CacheControler {
     private static CacheControler ourInstance = new CacheControler();
 
     private User user = null;
+    private Test currentTest = null;
 
     public static synchronized CacheControler getInstance() {
         return ourInstance;
@@ -21,5 +22,21 @@ public class CacheControler {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public static CacheControler getOurInstance() {
+        return ourInstance;
+    }
+
+    public static void setOurInstance(CacheControler ourInstance) {
+        CacheControler.ourInstance = ourInstance;
+    }
+
+    public Test getCurrentTest() {
+        return currentTest;
+    }
+
+    public void setCurrentTest(Test currentTest) {
+        this.currentTest = currentTest;
     }
 }
