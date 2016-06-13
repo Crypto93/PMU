@@ -16,15 +16,12 @@ public class UsersDataSource extends DBHelper {
         super(context);
     }
 
-    public boolean insertUser(User user) {
+    public boolean insertUser(String username, String password) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(USERNAME, user.getUsername());
-        cv.put(USER_PASSWORD, user.getPassword());
-        if (user.getUserType() == User.UserType.ADMIN)
-            cv.put(IS_ADMIN, ADMIN_TRUE);
-        else
-            cv.put(IS_ADMIN, ADMIN_FALSE);
+        cv.put(USERNAME, username);
+        cv.put(USER_PASSWORD, password);
+        cv.put(IS_ADMIN, ADMIN_FALSE);
 
         long isInserted = db.insert(USERS_TABLE, null, cv);
 

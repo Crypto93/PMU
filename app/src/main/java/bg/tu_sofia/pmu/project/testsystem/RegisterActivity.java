@@ -53,8 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 UsersDataSource uds = new UsersDataSource(RegisterActivity.this);
                 if (isEmailValid() && isPasswordValid()) {
                     if (uds.doesUserExist(regMailText)) {
-                        User user = User.createStudentUser(regMailText, passwordText);
-                        if (uds.insertUser(user)) {
+                        if (uds.insertUser(regMailText, passwordText)) {
                             Toast.makeText(RegisterActivity.this, getStringResource(successfull_registration), Toast.LENGTH_SHORT).show();
                             RegisterActivity.this.finish();
                         } else {
