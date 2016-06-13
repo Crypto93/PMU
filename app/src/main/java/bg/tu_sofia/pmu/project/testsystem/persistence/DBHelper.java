@@ -10,8 +10,22 @@ import android.util.Log;
  */
 class DBHelper extends SQLiteOpenHelper implements DBConstants {
 
-    public DBHelper(Context context) {
+    private static DBHelper instance = null;
+
+    private SQLiteDatabase readableDB = null;
+    private SQLiteDatabase writableDB = null;
+
+    public synchronized static DBHelper getInstance(Context ctx) {
+        if (instance == null) {
+            instance = new DBHelper(ctx);
+        }
+        return instance;
+    }
+
+    private DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        readableDB = getReadableDatabase();
+        writableDB = getWritableDatabase();
     }
 
     @Override
@@ -36,4 +50,9 @@ class DBHelper extends SQLiteOpenHelper implements DBConstants {
         onCreate(db);
     }
 
+    public SQLiteDatabase getPooledReadableDB() {
+        return readableDB;
+    }
+
+    public SQLiteDatabase getPooledWritableDB() { return writableDB; }
 }

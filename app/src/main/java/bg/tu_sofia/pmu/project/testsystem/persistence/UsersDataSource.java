@@ -10,20 +10,23 @@ import bg.tu_sofia.pmu.project.testsystem.utils.User;
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
  */
-public class UsersDataSource extends DBHelper {
+public class UsersDataSource implements DBConstants {
+
+    private SQLiteDatabase readableDB = null;
+    private SQLiteDatabase writableDB = null;
 
     public UsersDataSource(Context context) {
-        super(context);
+        readableDB = DBHelper.getInstance(context).getPooledReadableDB();
+        writableDB = DBHelper.getInstance(context).getPooledWritableDB();
     }
 
     public boolean insertUser(String username, String password) {
-        SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(USERNAME, username);
         cv.put(USER_PASSWORD, password);
         cv.put(IS_ADMIN, ADMIN_FALSE);
 
-        long isInserted = db.insert(USERS_TABLE, null, cv);
+        long isInserted = writableDB.insert(USERS_TABLE, null, cv);
 
         if (isInserted == -1)
             return false;
@@ -32,9 +35,8 @@ public class UsersDataSource extends DBHelper {
     }
 
     public boolean doesUserExist(String username) {
-        SQLiteDatabase db = getReadableDatabase();
         String[] params = new String[]{username};
-        Cursor res = db.rawQuery(SELECT_USER, params);
+        Cursor res = readableDB.rawQuery(SELECT_USER, params);
 
         if (res.getCount() == 0)
             return true;
@@ -44,14 +46,11 @@ public class UsersDataSource extends DBHelper {
     }
 
     public User getUser(String username, String password) {
-        SQLiteDatabase db = getReadableDatabase();
         String[] params = new String[]{username};
-        Cursor res = db.rawQuery(SELECT_USER, params);
-
+        Cursor res = readableDB.rawQuery(SELECT_USER, params);
 
         if (res.getCount() == 0)
             return null;
-
 
         res.moveToNext();
         int userID = res.getInt(0);

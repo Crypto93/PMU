@@ -12,17 +12,21 @@ import java.util.ArrayList;
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
  */
-public class CategoriesDataSource extends DBHelper {
+public class CategoriesDataSource implements DBConstants {
+
+    private SQLiteDatabase readableDB = null;
+    private SQLiteDatabase writableDB = null;
+
     public CategoriesDataSource(Context context) {
-        super(context);
+        readableDB = DBHelper.getInstance(context).getPooledReadableDB();
+        writableDB = DBHelper.getInstance(context).getPooledWritableDB();
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public ArrayList<String> getCattegories() {
-        SQLiteDatabase db = getReadableDatabase();
         ArrayList<String> cats = new ArrayList<>();
 
-        try (Cursor res = db.rawQuery(SELECT_CATEGORIES, null)) {
+        try (Cursor res = readableDB.rawQuery(SELECT_CATEGORIES, null)) {
             while (res.moveToNext()) {
                 cats.add(res.getString(1));
             }
@@ -31,10 +35,9 @@ public class CategoriesDataSource extends DBHelper {
     }
 
     public boolean insertCategory(String catName) {
-        SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(CATEGORY_NAME, catName);
-        long isInserted = db.insert(CATEGORIES_TABLE, null, cv);
+        long isInserted = writableDB.insert(CATEGORIES_TABLE, null, cv);
 
         if (isInserted == -1)
             return false;
@@ -44,9 +47,8 @@ public class CategoriesDataSource extends DBHelper {
     }
 
     public int getCategoryID(String category) {
-        SQLiteDatabase db = getReadableDatabase();
         String[] params = new String[]{category};
-        Cursor res = db.rawQuery(SELECT_CAT_ID_BY_NAME, params);
+        Cursor res = readableDB.rawQuery(SELECT_CAT_ID_BY_NAME, params);
 
         return res.getInt(res.getColumnIndex(CATEGORY_ID));
     }
