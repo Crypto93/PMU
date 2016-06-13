@@ -28,13 +28,9 @@
         </activity>
         <activity android:name=".SingleTestSummaryActivity" >
         </activity>
-        <activity android:name=".OpenAnswerQuestionActivity" >
-        </activity>
-        <activity android:name=".ClosedAnswerQuestionActivity" >
+        <activity android:name=".QuestionActivity" >
         </activity>
         <activity android:name=".RegisterActivity" >
-        </activity>
-        <activity android:name=".TestControllerActivity" >
         </activity>
         <activity android:name=".AddQuestionActivity" >
         </activity>

@@ -27,6 +27,7 @@ public class Test implements Serializable {
     private boolean checked = false;
     private int correctAnswers;
     private int wrongAnswers;
+    private boolean isTimed;
 
 
     public void addQuestion(Question q) {
@@ -134,4 +135,12 @@ public class Test implements Serializable {
         return wrongAnswers;
     }
 
+    public boolean isTimed() {
+        return isTimed;
+    }
+
+    public void setIsTimed(boolean isTimed) {
+
+        this.isTimed = isTimed;
+    }
 }
