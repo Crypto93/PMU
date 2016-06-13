@@ -56,4 +56,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/logInButton"
         android:layout_alignEnd="@+id/logInButton" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/img"
+        android:src="@drawable/img"
+        android:layout_below="@+id/registrationButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

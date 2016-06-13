@@ -29,6 +29,7 @@ public class Test implements Serializable {
     private int correctAnswers;
     private int wrongAnswers;
     private boolean isTimed;
+    private String category;
 
     public Test() {
         questions = new HashMap<>();
@@ -110,10 +111,6 @@ public class Test implements Serializable {
         this.checked = checked;
     }
 
-    public HashMap<Question, QUESTION_STATUS> getQuestions() {
-        return questions;
-    }
-
     public String getTestID() {
         return testID;
     }
@@ -145,5 +142,13 @@ public class Test implements Serializable {
     public void setIsTimed(boolean isTimed) {
 
         this.isTimed = isTimed;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

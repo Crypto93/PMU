@@ -1,6 +1,6 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
 
-public class AddCategoryActivity extends AppCompatActivity {
+public class AddCategoryActivity extends Activity {
 
     EditText addCatEditText;
     Button addCatButton;

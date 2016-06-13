@@ -26,6 +26,8 @@ public class TestBuilder {
         test.setTestID(UUID.randomUUID().toString());
         test.setChecked(false);
         test.setQuestions(questions);
+        test.setTakenOn(System.currentTimeMillis());
+        test.setCategory(category);
 
         CacheControler.getInstance().setCurrentTest(test);
 

@@ -1,7 +1,7 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.persistence.UsersDataSource;
-import bg.tu_sofia.pmu.project.testsystem.utils.User;
 
 import static bg.tu_sofia.pmu.project.testsystem.R.string.existing_email_error;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;
@@ -18,7 +17,7 @@ import static bg.tu_sofia.pmu.project.testsystem.R.string.passwords_does_not_mat
 import static bg.tu_sofia.pmu.project.testsystem.R.string.successfull_registration;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.unsuccessfull_registration;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends Activity {
 
     private EditText regEmail= null;
     private EditText password = null;

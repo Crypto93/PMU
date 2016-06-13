@@ -1,11 +1,11 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +15,16 @@ import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 import bg.tu_sofia.pmu.project.testsystem.utils.Question;
 import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestBuilder;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends Activity {
 
     private Test test;
-    private CountDownTimer timer;
 
     private Question currentQuestion = null;
     private boolean isCurrentQuestionOpenType = false;
@@ -122,19 +122,24 @@ public class QuestionActivity extends AppCompatActivity {
 
         test = TestBuilder.generateTest(this, category, 4, 1);
 
-        if (TestSystemConstants.TIMED_TEST.equals(getIntent().getExtras().getString(TestSystemConstants.CATEGORY_KEY))) {
+        if (TestSystemConstants.TIMED_TEST.equals(getIntent().getExtras().getString(TestSystemConstants.IS_TIMED_KEY))) {
             test.setIsTimed(true);
-            timer = new CountDownTimer(1800000, 1000) {
+            new CountDownTimer(18000, 1000) {
+
                 @Override
                 public void onTick(long millisUntilFinished) {
+                    String FORMAT = "%02d:%02d:%02d";
                     timeLeftLabel.setVisibility(View.VISIBLE);
                     timeLeft.setVisibility(View.VISIBLE);
-                    timeLeft.setText((int) (millisUntilFinished / 1000));
+                    timeLeft.setText("" + String.format(FORMAT,
+                            TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                            TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 }
 
                 @Override
                 public void onFinish() {
-                    AlertDialog.Builder dlgAlert = new AlertDialog.Builder(getApplicationContext());
+                    AlertDialog.Builder dlgAlert = new AlertDialog.Builder(QuestionActivity.this);
                     dlgAlert.setMessage(getResources().getString(R.string.times_up_message));
                     dlgAlert.setTitle(getResources().getString(R.string.times_up_label));
                     dlgAlert.setPositiveButton(getResources().getString(R.string.ok_button), new DialogInterface.OnClickListener() {
@@ -146,9 +151,8 @@ public class QuestionActivity extends AppCompatActivity {
                     dlgAlert.setCancelable(true);
                     dlgAlert.create().show();
                 }
-            };
-            timer.start();
-        } else if (TestSystemConstants.NON_TIMED_TEST.equals(getIntent().getExtras().getString(TestSystemConstants.CATEGORY_KEY))) {
+            }.start();
+        } else if (TestSystemConstants.NON_TIMED_TEST.equals(getIntent().getExtras().getString(TestSystemConstants.IS_TIMED_KEY))) {
             test.setIsTimed(false);
             timeLeftLabel.setVisibility(View.INVISIBLE);
             timeLeft.setVisibility(View.INVISIBLE);

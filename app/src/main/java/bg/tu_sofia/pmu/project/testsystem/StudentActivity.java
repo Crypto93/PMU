@@ -1,8 +1,8 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
-public class StudentActivity extends AppCompatActivity {
+public class StudentActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
