@@ -1,6 +1,7 @@
 package bg.tu_sofia.pmu.project.testsystem.persistence;
 
 import android.annotation.TargetApi;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,8 +27,27 @@ public class CategoriesDataSource extends DBHelper {
                 cats.add(res.getString(1));
             }
         }
-
         return cats;
+    }
 
+    public boolean insertCategory(String catName) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(CATEGORY_NAME, catName);
+        long isInserted = db.insert(CATEGORIES_TABLE, null, cv);
+
+        if (isInserted == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public int getCategoryID(String category) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] params = new String[]{category};
+        Cursor res = db.rawQuery(SELECT_CAT_ID_BY_NAME, params);
+
+        return res.getInt(res.getColumnIndex(CATEGORY_ID));
     }
 }

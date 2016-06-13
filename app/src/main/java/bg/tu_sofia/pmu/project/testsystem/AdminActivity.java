@@ -1,5 +1,6 @@
 package bg.tu_sofia.pmu.project.testsystem;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,23 +14,37 @@ public class AdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        init();
     }
 
     private void init() {
-        Button addButton = (Button) findViewById(R.id.addQuestionButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        Button addQuestionButton = (Button) findViewById(R.id.addQuestionButton);
+        addQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(AdminActivity.this, AddQuestionActivity.class);
+                AdminActivity.this.startActivity(intent);
             }
         });
+
+        Button addCategoryButton = (Button) findViewById(R.id.addQuestionButton);
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, AddCategoryActivity.class);
+                AdminActivity.this.startActivity(intent);
+            }
+        });
+
 
         Button referenceButton = (Button) findViewById(R.id.referenceButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        referenceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // To be implemnted
             }
         });
+
+
     }
 }

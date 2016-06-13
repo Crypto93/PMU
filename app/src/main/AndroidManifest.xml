@@ -36,6 +36,10 @@
         </activity>
         <activity android:name=".TestControllerActivity" >
         </activity>
+        <activity android:name=".AddQuestionActivity" >
+        </activity>
+        <activity android:name=".AddCategoryActivity" >
+        </activity>
     </application>
 
 </manifest>

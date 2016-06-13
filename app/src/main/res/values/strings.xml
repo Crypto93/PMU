@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE resources [
     <!ENTITY pass_symbol "4">
+    <!ENTITY open_question "Въпрос с отворен отговор">
+    <!ENTITY close_question "Въпрос със затворен отговор">
 
     ]>
 
@@ -20,7 +22,17 @@
     <string name="percentage_label">Успеваемост: </string>
     <string name="time_left">00:00</string>
     <string name="answer_hint">Вашият отговор</string>
+    <string name="answer_correct_hint">Въведете верният отговор</string>
+    <string name="answer_other_hint">Въведете друг отговор</string>
+    <string name="question_hint">Въведете въпрос</string>
     <string name="catlabel">Категория: </string>
+    <string name="close_question">"&close_question;"</string>
+    <string name="open_question">"&open_question;"</string>
+
+    <string-array name="question_types" >
+        <item name="close_question">"&close_question;"</item>
+        <item name="open_question">"&open_question;"</item>
+    </string-array>
 
     // Messages
     <string name="successfull_registration">Успешна регистрация!</string>
@@ -28,6 +40,11 @@
     <string name="existing_email_error">"Вече съществува потребител с това потребителско име/email"</string>
     <string name="wrong_username_or_password">"Грешен email или парола"</string>
     <string name="successfull_login">"Успешно влизане в системата."</string>
+    <string name="empty_fields">"Моля попълнете всички необходими полета"</string>
+    <string name="add_question_success">"Въпросът беше добавен успешно."</string>
+    <string name="add_question_failure">"Грешка. Въпросът не беше добавен."</string>
+    <string name="add_category_success">"Категорията беше добавена успешно."</string>
+    <string name="add_category_failure">"Грешка. Категорията не беше добавена."</string>
 
 
     // Buttons
@@ -43,6 +60,7 @@
     <string name="test_end_button">Край на теста</string>
     <string name="logIn_button">Вписване</string>
     <string name="register_button">Регистрация</string>
+    <string name="add_category_button">Добави категория</string>
 
 
     // Errors
