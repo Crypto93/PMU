@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.persistence.UsersDataSource;
+import bg.tu_sofia.pmu.project.testsystem.utils.User;
 
 import static bg.tu_sofia.pmu.project.testsystem.R.string.existing_email_error;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;

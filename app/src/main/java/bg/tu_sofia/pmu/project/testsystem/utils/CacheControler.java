@@ -1,7 +1,5 @@
 package bg.tu_sofia.pmu.project.testsystem.utils;
 
-import bg.tu_sofia.pmu.project.testsystem.User;
-
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
  */

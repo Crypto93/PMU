@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.utils;
 
 /**
  * Created by Stefan Chuklev on 8.6.2016 г..
@@ -8,19 +8,21 @@ public class User {
         ADMIN, STUDENT
     }
 
-    public static User createStudentUser(String username, String password) {
-        return new User(username, password, UserType.STUDENT);
+    public static User createStudentUser(int userID, String username, String password) {
+        return new User(userID, username, password, UserType.STUDENT);
     }
 
-    public static User createAdminUser(String username, String password) {
-        return new User(username, password, UserType.ADMIN);
+    public static User createAdminUser(int userID,String username, String password) {
+        return new User(userID, username, password, UserType.ADMIN);
     }
 
+    private int userID = 0;
     private String username = null;
     private String password = null;
     private UserType userType = null;
 
-    private User(String username, String password, UserType userType) {
+    private User(int userID, String username, String password, UserType userType) {
+        this.userID = userID;
         this.username = username;
         this.userType = userType;
         this.password = password;
@@ -36,7 +38,8 @@ public class User {
 
     public String getPassword() { return password; }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    public int getUserID() {
+        return userID;
     }
+
 }

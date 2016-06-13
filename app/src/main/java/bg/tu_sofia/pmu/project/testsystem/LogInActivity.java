@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.persistence.UsersDataSource;
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
+import bg.tu_sofia.pmu.project.testsystem.utils.User;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import bg.tu_sofia.pmu.project.testsystem.User;
+import bg.tu_sofia.pmu.project.testsystem.utils.User;
 
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
@@ -57,6 +57,7 @@ public class UsersDataSource extends DBHelper {
 
 
         res.moveToNext();
+        int userID = res.getInt(0);
         String usernameFromDb = res.getString(1);
         String passFromDB = res.getString(2);
         int userType = res.getInt(3);
@@ -65,9 +66,9 @@ public class UsersDataSource extends DBHelper {
             return null;
         } else {
             if (res.getInt(3) == 1)
-                return User.createAdminUser(usernameFromDb, passFromDB);
+                return User.createAdminUser(userID, usernameFromDb, passFromDB);
             else
-                return User.createStudentUser(usernameFromDb, passFromDB);
+                return User.createStudentUser(userID, usernameFromDb, passFromDB);
         }
     }
 
