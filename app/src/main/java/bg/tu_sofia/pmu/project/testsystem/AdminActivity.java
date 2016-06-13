@@ -27,7 +27,7 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        Button addCategoryButton = (Button) findViewById(R.id.addQuestionButton);
+        Button addCategoryButton = (Button) findViewById(R.id.addCatB);
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -33,13 +33,13 @@ public class AddCategoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (validateFields()) {
                     if (cds.insertCategory(addCatEditText.getText().toString())) {
-                        Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.add_category_success), Toast.LENGTH_SHORT);
+                        Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.add_category_success), Toast.LENGTH_SHORT).show();
                         AddCategoryActivity.this.finish();
                     } else {
-                        Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.add_category_failure), Toast.LENGTH_SHORT);
+                        Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.add_category_failure), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.empty_fields), Toast.LENGTH_SHORT);
+                    Toast.makeText(AddCategoryActivity.this, getResources().getString(R.string.empty_fields), Toast.LENGTH_SHORT).show();
                 }
             }
         });
