@@ -1,15 +1,15 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import bg.tu_sofia.pmu.project.testsystem.R;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
-public class AdminActivity extends Activity {
+public class AdminActivity extends AppCompatActivity {
 
 
 

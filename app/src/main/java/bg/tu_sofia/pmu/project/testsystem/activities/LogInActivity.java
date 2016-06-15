@@ -1,8 +1,8 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.R;
 import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.UsersDataSource;
-import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 import bg.tu_sofia.pmu.project.testsystem.persistence.model.User;
+import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;
@@ -19,7 +19,7 @@ import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_password_forma
 import static bg.tu_sofia.pmu.project.testsystem.R.string.successfull_login;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.wrong_username_or_password;
 
-public class LogInActivity extends Activity {
+public class LogInActivity extends AppCompatActivity {
 
     EditText emailEditText = null;
     EditText passEditText = null;

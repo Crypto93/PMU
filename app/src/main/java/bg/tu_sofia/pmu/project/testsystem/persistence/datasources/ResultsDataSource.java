@@ -49,6 +49,8 @@ public class ResultsDataSource implements DBConstants {
     }
 
     public ArrayList<Result> getTestResultsPerUser(String user) {
+        UsersDataSource uds = new UsersDataSource(ctx);
+        CategoriesDataSource cds = new CategoriesDataSource(ctx);
         ArrayList<Result> results = new ArrayList<>();
 
         String[] params = null;
@@ -56,14 +58,15 @@ public class ResultsDataSource implements DBConstants {
         if (TestSystemConstants.ALL_USERS.equals(user)) {
             res = readableDB.rawQuery(SELECT_ALL_TESTS, params = new String[]{});
         } else {
-            res = readableDB.rawQuery(SELECT_SPECIFIC_USER_TESTS, params = new String[]{user});
+            String userID = String.valueOf(uds.getUserID(user));
+            res = readableDB.rawQuery(SELECT_SPECIFIC_USER_TESTS, params = new String[]{userID});
         }
 
         try (Cursor resource = res) {
             while (res.moveToNext()) {
                 Result result = new Result(
-                        resource.getString(res.getColumnIndex(USERNAME)),
-                        resource.getString(res.getColumnIndex(CATEGORY_NAME)),
+                        uds.getUserNameByID(resource.getInt(res.getColumnIndex(RESULT_USER_ID))),
+                        cds.getCategoryName(resource.getInt(res.getColumnIndex(RESULT_CATEGORY_ID))),
                         resource.getInt(res.getColumnIndex(RESULT_CORRECT_ANSWERS)),
                         resource.getInt(res.getColumnIndex(RESULT_WRONG_ANSWERS)),
                         resource.getLong(res.getColumnIndex(RESULT_DATETIME_TAKEN))

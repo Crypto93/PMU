@@ -1,8 +1,8 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +15,7 @@ import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.CategoriesData
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
-public class StudentActivity extends Activity {
+public class StudentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

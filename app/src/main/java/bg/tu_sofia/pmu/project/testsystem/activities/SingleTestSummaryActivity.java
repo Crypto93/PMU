@@ -1,9 +1,9 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,7 @@ import bg.tu_sofia.pmu.project.testsystem.persistence.model.Result;
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 
-public class SingleTestSummaryActivity extends Activity {
+public class SingleTestSummaryActivity extends AppCompatActivity {
 
     private TextView categoryTextView;
     private TextView correctTextView;

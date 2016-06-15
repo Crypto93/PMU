@@ -1,7 +1,7 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,7 +17,7 @@ import bg.tu_sofia.pmu.project.testsystem.R;
 import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.CategoriesDataSource;
 import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.QuestionsDataSource;
 
-public class AddQuestionActivity extends Activity {
+public class AddQuestionActivity extends AppCompatActivity {
 
     private EditText questionEditText;
     private EditText correctAnswerEditText;

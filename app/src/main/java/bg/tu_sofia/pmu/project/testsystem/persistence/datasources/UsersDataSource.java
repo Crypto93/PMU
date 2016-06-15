@@ -81,4 +81,12 @@ public class UsersDataSource implements DBConstants {
         return res.getInt(res.getColumnIndex(USER_ID));
     }
 
+    public String getUserNameByID(int id) {
+        String[] params = new String[]{String.valueOf(id)};
+        Cursor res = readableDB.rawQuery(SELECT_USERNAME_BY_ID, params);
+
+        res.moveToNext();
+        return res.getString(res.getColumnIndex(USERNAME));
+    }
+
 }

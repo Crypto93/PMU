@@ -56,4 +56,13 @@ public class CategoriesDataSource implements DBConstants {
         res.moveToNext();
         return res.getInt(res.getColumnIndex(CATEGORY_ID));
     }
+
+    public String getCategoryName(int id) {
+        String[] params = new String[]{String.valueOf(id)};
+        Cursor res = readableDB.rawQuery(SELECT_CATEGORY_NAME, params);
+
+        res.moveToNext();
+        return res.getString(res.getColumnIndex(CATEGORY_NAME));
+    }
+
 }

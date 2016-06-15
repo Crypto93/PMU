@@ -1,11 +1,11 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +23,7 @@ import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestBuilder;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
-public class QuestionActivity extends Activity {
+public class QuestionActivity extends AppCompatActivity {
 
     private Test test;
 

@@ -88,8 +88,10 @@ public interface DBConstants {
             ");";
 
     public static final String SELECT_USER = "SELECT * FROM " + USERS_TABLE + " WHERE " + USERNAME + " =?";
+    public static final String SELECT_USERNAME_BY_ID = "SELECT * FROM " + USERS_TABLE + " WHERE " + USER_ID + " =?";
 
     public static final String SELECT_CATEGORIES = "SELECT * FROM " + CATEGORIES_TABLE;
+    public static final String SELECT_CATEGORY_NAME = "SELECT * FROM " + CATEGORIES_TABLE + " WHERE " + CATEGORY_ID + "=?";
 
     public static final String SELECT_RANDOM_CLOSED_QUESTIONS_BY_CAT = "SELECT DISTINCT * FROM " + QUESTIONS_TABLE +
             " WHERE " + QUESTION_TYPE + "=" + CLOSED_TYPE_QUESTION +
@@ -104,28 +106,13 @@ public interface DBConstants {
     public static final String SELECT_CAT_ID_BY_NAME = "SELECT " + CATEGORY_ID + " FROM " + CATEGORIES_TABLE + " WHERE " + CATEGORY_NAME + " =?";
     public static final String SELECT_USER_ID_BY_NAME = "SELECT " + USER_ID + " FROM " + USERS_TABLE + " WHERE " + USERNAME + " =?";
 
-    public static final String SELECT_ALL_TESTS = "SELECT " +
-            USERNAME +", " +
-            RESULT_CORRECT_ANSWERS + ", " +
-            RESULT_WRONG_ANSWERS + ", " +
-            CATEGORY_NAME + ", " +
-            RESULT_DATETIME_TAKEN +
-            " FROM " +
-            RESULTS_TABLE +
-            " LEFT JOIN " + USERS_TABLE + " ON " + RESULT_USER_ID + "=" + USER_ID +
-            " LEFT JOIN " + CATEGORIES_TABLE + " ON " + RESULT_CATEGORY_ID + "=" + CATEGORY_ID;
+    public static final String SELECT_ALL_TESTS = "SELECT *" +
+            " FROM " + RESULTS_TABLE;
 
-    public static final String SELECT_SPECIFIC_USER_TESTS = "SELECT " +
-            USERNAME +", " +
-            RESULT_CORRECT_ANSWERS + ", " +
-            RESULT_WRONG_ANSWERS + ", " +
-            CATEGORY_NAME + ", " +
-            RESULT_DATETIME_TAKEN +
-            " FROM " +
-            RESULTS_TABLE +
-            " WHERE " + RESULT_USER_ID + "=?" +
-            " LEFT JOIN " + USERS_TABLE + " ON " + RESULT_USER_ID + "=" + USER_ID +
-            " LEFT JOIN " + CATEGORIES_TABLE + " ON " + RESULT_CATEGORY_ID + "=" + CATEGORY_ID;
+    public static final String SELECT_SPECIFIC_USER_TESTS = "SELECT *" +
+            " FROM " + RESULTS_TABLE +
+            " WHERE " + RESULT_USER_ID + "=?";
+
 
 
 

@@ -1,7 +1,7 @@
 package bg.tu_sofia.pmu.project.testsystem.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +19,7 @@ import static bg.tu_sofia.pmu.project.testsystem.R.string.passwords_does_not_mat
 import static bg.tu_sofia.pmu.project.testsystem.R.string.successfull_registration;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.unsuccessfull_registration;
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText regEmail= null;
     private EditText password = null;
