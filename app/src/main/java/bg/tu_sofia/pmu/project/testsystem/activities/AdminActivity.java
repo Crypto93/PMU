@@ -1,10 +1,13 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
 public class AdminActivity extends Activity {
 
@@ -41,7 +44,9 @@ public class AdminActivity extends Activity {
         referenceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // To be implemnted
+                Intent intent = new Intent(AdminActivity.this, ResultsListActivity.class);
+                intent.putExtra(TestSystemConstants.USER_KEY, TestSystemConstants.ALL_USERS);
+                AdminActivity.this.startActivity(intent);
             }
         });
 

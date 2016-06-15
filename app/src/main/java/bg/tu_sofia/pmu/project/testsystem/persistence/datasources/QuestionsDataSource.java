@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem.persistence;
+package bg.tu_sofia.pmu.project.testsystem.persistence.datasources;
 
 import android.annotation.TargetApi;
 import android.content.ContentValues;
@@ -10,7 +10,9 @@ import android.os.Build;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import bg.tu_sofia.pmu.project.testsystem.utils.Question;
+import bg.tu_sofia.pmu.project.testsystem.persistence.DBConstants;
+import bg.tu_sofia.pmu.project.testsystem.persistence.DBHelper;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.Question;
 
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..

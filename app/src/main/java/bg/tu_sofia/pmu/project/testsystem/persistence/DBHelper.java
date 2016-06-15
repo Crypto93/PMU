@@ -8,7 +8,7 @@ import android.util.Log;
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
  */
-class DBHelper extends SQLiteOpenHelper implements DBConstants {
+public class DBHelper extends SQLiteOpenHelper implements DBConstants {
 
     private static DBHelper instance = null;
 
@@ -34,7 +34,6 @@ class DBHelper extends SQLiteOpenHelper implements DBConstants {
         db.execSQL(CREATE_RESULTS_TABLE);
         db.execSQL(CREATE_QUESTIONS_TABLE);
         db.execSQL(CREATE_CATEGORIES_TABLE);
-        db.execSQL(CREATE_TESTS_TABLE);
     }
 
     @Override
@@ -46,13 +45,10 @@ class DBHelper extends SQLiteOpenHelper implements DBConstants {
         db.execSQL("DROP TABLE IF EXISTS " + CATEGORIES_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + QUESTIONS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + RESULTS_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + TESTS_TABLE);
         onCreate(db);
     }
 
-    public SQLiteDatabase getPooledReadableDB() {
-        return readableDB;
-    }
+    public SQLiteDatabase getPooledReadableDB() {return readableDB; }
 
     public SQLiteDatabase getPooledWritableDB() { return writableDB; }
 }

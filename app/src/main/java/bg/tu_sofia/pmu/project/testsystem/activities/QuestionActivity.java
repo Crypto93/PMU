@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,7 +17,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-import bg.tu_sofia.pmu.project.testsystem.utils.Question;
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.Question;
 import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestBuilder;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;

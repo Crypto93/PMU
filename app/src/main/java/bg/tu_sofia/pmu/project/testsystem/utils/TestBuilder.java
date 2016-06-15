@@ -5,8 +5,9 @@ import android.content.Context;
 import java.util.LinkedList;
 import java.util.UUID;
 
-import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
-import bg.tu_sofia.pmu.project.testsystem.persistence.QuestionsDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.CategoriesDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.QuestionsDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.Question;
 
 /**
  * Created by Stefan Chuklev on 13.6.2016 г..
@@ -22,7 +23,7 @@ public class TestBuilder {
         LinkedList<Question> questions = qds.getTestQuestions(closedQuestionsNumber, openQuestionsNumber, categoryId);
 
         Test test = new Test();
-        test.setUserID(CacheControler.getInstance().getUser().getUserID());
+        test.setUser(CacheControler.getInstance().getUser().getUsername());
         test.setTestID(UUID.randomUUID().toString());
         test.setChecked(false);
         test.setQuestions(questions);

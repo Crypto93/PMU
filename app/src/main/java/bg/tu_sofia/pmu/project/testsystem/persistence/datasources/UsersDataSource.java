@@ -1,11 +1,13 @@
-package bg.tu_sofia.pmu.project.testsystem.persistence;
+package bg.tu_sofia.pmu.project.testsystem.persistence.datasources;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import bg.tu_sofia.pmu.project.testsystem.utils.User;
+import bg.tu_sofia.pmu.project.testsystem.persistence.DBConstants;
+import bg.tu_sofia.pmu.project.testsystem.persistence.DBHelper;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.User;
 
 /**
  * Created by Stefan Chuklev on 12.6.2016 г..
@@ -20,11 +22,14 @@ public class UsersDataSource implements DBConstants {
         writableDB = DBHelper.getInstance(context).getPooledWritableDB();
     }
 
-    public boolean insertUser(String username, String password) {
+    public boolean insertUser(User user) {
         ContentValues cv = new ContentValues();
-        cv.put(USERNAME, username);
-        cv.put(USER_PASSWORD, password);
-        cv.put(IS_ADMIN, ADMIN_FALSE);
+        cv.put(USERNAME, user.getUsername());
+        cv.put(USER_PASSWORD, user.getPassword());
+        if (User.UserType.ADMIN == user.getUserType())
+            cv.put(IS_ADMIN, ADMIN_TRUE);
+        else
+            cv.put(IS_ADMIN, ADMIN_FALSE);
 
         long isInserted = writableDB.insert(USERS_TABLE, null, cv);
 
@@ -62,10 +67,18 @@ public class UsersDataSource implements DBConstants {
             return null;
         } else {
             if (res.getInt(3) == 1)
-                return User.createAdminUser(userID, usernameFromDb, passFromDB);
+                return User.createAdminUser(usernameFromDb, passFromDB);
             else
-                return User.createStudentUser(userID, usernameFromDb, passFromDB);
+                return User.createStudentUser(usernameFromDb, passFromDB);
         }
+    }
+
+    public int getUserID(String user) {
+        String[] params = new String[]{user};
+        Cursor res = readableDB.rawQuery(SELECT_USER_ID_BY_NAME, params);
+
+        res.moveToNext();
+        return res.getInt(res.getColumnIndex(USER_ID));
     }
 
 }

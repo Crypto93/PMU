@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.Question;
+
 /**
  * Created by Stefan Chuklev on 13.6.2016 г..
  */
@@ -24,7 +26,7 @@ public class Test implements Serializable {
 
     private String testID;
     private long takenOn;
-    private int userID;
+    private String user;
     private boolean checked = false;
     private int correctAnswers;
     private int wrongAnswers;
@@ -103,8 +105,8 @@ public class Test implements Serializable {
         this.takenOn = takenOn;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public void setChecked(boolean checked) {
@@ -119,8 +121,8 @@ public class Test implements Serializable {
         return takenOn;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUser() {
+        return user;
     }
 
     public boolean isChecked() {

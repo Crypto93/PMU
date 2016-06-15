@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem.utils;
+package bg.tu_sofia.pmu.project.testsystem.persistence.model;
 
 import java.util.ArrayList;
 

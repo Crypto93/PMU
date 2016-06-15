@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,8 +13,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
-import bg.tu_sofia.pmu.project.testsystem.persistence.QuestionsDataSource;
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.CategoriesDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.QuestionsDataSource;
 
 public class AddQuestionActivity extends Activity {
 

@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,9 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-import bg.tu_sofia.pmu.project.testsystem.persistence.CategoriesDataSource;
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.CategoriesDataSource;
+import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestSystemConstants;
 
 public class StudentActivity extends Activity {
@@ -45,6 +47,16 @@ public class StudentActivity extends Activity {
                 Intent intent = new Intent(StudentActivity.this, QuestionActivity.class);
                 intent.putExtra(TestSystemConstants.CATEGORY_KEY, getChosenCategory());
                 intent.putExtra(TestSystemConstants.IS_TIMED_KEY, TestSystemConstants.TIMED_TEST);
+                StudentActivity.this.startActivity(intent);
+            }
+        });
+
+        Button studentReferencebutton = (Button) findViewById(R.id.studentReferenceButton);
+        studentReferencebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentActivity.this, ResultsListActivity.class);
+                intent.putExtra(TestSystemConstants.USER_KEY, CacheControler.getInstance().getUser().getUsername());
                 StudentActivity.this.startActivity(intent);
             }
         });

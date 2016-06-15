@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -15,6 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.ResultsDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.Result;
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
 import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 
@@ -35,6 +38,7 @@ public class SingleTestSummaryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_test_summary);
 
+        saveResultToDB();
         init();
     }
 
@@ -84,13 +88,13 @@ public class SingleTestSummaryActivity extends Activity {
 
     }
 
-    public Bitmap takeScreenshot() {
+    private Bitmap takeScreenshot() {
         View rootView = findViewById(android.R.id.content).getRootView();
         rootView.setDrawingCacheEnabled(true);
         return rootView.getDrawingCache();
     }
 
-    public void saveBitmap(Bitmap bitmap) {
+    private void saveBitmap(Bitmap bitmap) {
         File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
         FileOutputStream fos;
         try {
@@ -104,4 +108,17 @@ public class SingleTestSummaryActivity extends Activity {
             Log.e("GREC", e.getMessage(), e);
         }
     }
+
+    private void saveResultToDB() {
+        Test test = CacheControler.getInstance().getCurrentTest();
+        Result result = new Result(CacheControler.getInstance().getUser().getUsername(),
+                test.getCategory(),
+                test.getCorrectAnswers(),
+                test.getWrongAnswers(),
+                test.getTakenOn());
+        ResultsDataSource rds = new ResultsDataSource(SingleTestSummaryActivity.this);
+        rds.insertTestResult(result);
+    }
+
+
 }

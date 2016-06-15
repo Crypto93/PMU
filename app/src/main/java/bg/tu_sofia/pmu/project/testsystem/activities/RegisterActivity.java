@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import bg.tu_sofia.pmu.project.testsystem.persistence.UsersDataSource;
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.UsersDataSource;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.User;
 
 import static bg.tu_sofia.pmu.project.testsystem.R.string.existing_email_error;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;
@@ -52,7 +54,8 @@ public class RegisterActivity extends Activity {
                 UsersDataSource uds = new UsersDataSource(RegisterActivity.this);
                 if (isEmailValid() && isPasswordValid()) {
                     if (uds.doesUserExist(regMailText)) {
-                        if (uds.insertUser(regMailText, passwordText)) {
+                        User user = User.createStudentUser(regMailText, passwordText);
+                        if (uds.insertUser(user)) {
                             Toast.makeText(RegisterActivity.this, getStringResource(successfull_registration), Toast.LENGTH_SHORT).show();
                             RegisterActivity.this.finish();
                         } else {

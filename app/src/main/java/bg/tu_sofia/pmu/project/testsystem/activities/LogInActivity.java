@@ -1,4 +1,4 @@
-package bg.tu_sofia.pmu.project.testsystem;
+package bg.tu_sofia.pmu.project.testsystem.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,9 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import bg.tu_sofia.pmu.project.testsystem.persistence.UsersDataSource;
+import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.UsersDataSource;
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
-import bg.tu_sofia.pmu.project.testsystem.utils.User;
+import bg.tu_sofia.pmu.project.testsystem.persistence.model.User;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static bg.tu_sofia.pmu.project.testsystem.R.string.invalid_email_format;
