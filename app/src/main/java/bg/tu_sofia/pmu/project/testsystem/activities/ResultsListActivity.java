@@ -38,11 +38,17 @@ public class ResultsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results_list);
 
         init();
+
+        ResultsDataSource rds = new ResultsDataSource(this);
+        rds.populateResults();
     }
 
     private void init() {
         ResultsDataSource rds = new ResultsDataSource(ResultsListActivity.this);
         ArrayList<Result> results = null;
+
+        Button printButton;
+        Button homeButton;
 
         String user = getIntent().getExtras().getString(TestSystemConstants.USER_KEY);
 
@@ -50,9 +56,6 @@ public class ResultsListActivity extends AppCompatActivity {
             results = rds.getTestResultsForAllUsers();
         else
             results = rds.getTestResultsPerUser(user);
-
-        Button printButton;
-        Button homeButton;
 
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(new CustomAdapter(ResultsListActivity.this, results));

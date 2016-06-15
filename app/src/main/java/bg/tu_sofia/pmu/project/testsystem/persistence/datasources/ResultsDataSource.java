@@ -77,6 +77,24 @@ public class ResultsDataSource implements DBConstants {
         return results;
     }
 
+    //test purpose
+    static boolean isPopulated = false;
+    public void populateResults() {
+
+        if (isPopulated) {
+            Result res = new Result("student@test.com", "JAVA", 4, 1, System.currentTimeMillis());
+            insertTestResult(res);
+            res = new Result("student@test.com", "География", 4, 1, System.currentTimeMillis());
+            insertTestResult(res);
+            res = new Result("student@test.com", "JAVA", 1, 4, System.currentTimeMillis());
+            insertTestResult(res);
+            res = new Result("test@student.com", "JAVA", 4, 1, System.currentTimeMillis());
+            insertTestResult(res);
+            isPopulated = true;
+        }
+
+    }
+
 
 
 

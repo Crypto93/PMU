@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.QuestionsDataSource;
 import bg.tu_sofia.pmu.project.testsystem.persistence.model.Question;
 import bg.tu_sofia.pmu.project.testsystem.utils.Test;
 import bg.tu_sofia.pmu.project.testsystem.utils.TestBuilder;
@@ -50,6 +51,9 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        QuestionsDataSource qds = new QuestionsDataSource(this);
+        qds.populateQuestions();
 
         init();
 

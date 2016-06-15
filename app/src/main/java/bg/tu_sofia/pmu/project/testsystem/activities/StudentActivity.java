@@ -22,6 +22,9 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
 
+        CategoriesDataSource cds = new CategoriesDataSource(this);
+        cds.populateCategories();
+
         init();
     }
 

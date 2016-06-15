@@ -47,6 +47,7 @@ public class QuestionsDataSource implements DBConstants {
         String[] params = new String[]{category};
         Cursor res = readableDB.rawQuery(SELECT_CAT_ID_BY_NAME, params);
 
+        res.moveToNext();
         return res.getInt(res.getColumnIndex(CATEGORY_ID));
     }
 
@@ -118,6 +119,32 @@ public class QuestionsDataSource implements DBConstants {
             return false;
         else
             return true;
+    }
+
+    //test purposes
+    static boolean isPopulated = false;
+    public void populateQuestions() {
+        if (!isPopulated) {
+            addOpenQuestion("Декларирайте обект от тип String в java.", "JAVA");
+            addOpenQuestion("Обяснете понятието Garbage collector в Java.", "JAVA");
+            addClosedQuestion("Кой интерфейс се използва за сериализиране на обекти?", "Serializable", "Serial", "Comparable", "Byteable", "JAVA");
+            addClosedQuestion("Кой интерфейс се използва за сериализиране на обекти?", "Serializable", "Serial", "Comparable", "Byteable", "JAVA");
+            addClosedQuestion("С коя ключова дума хвърляме нов Exception в Java?", "throw", "thrown", "Throwable", "throws", "JAVA");
+            addClosedQuestion("Kоя ключова дума се използва за синхронизация в Java?", "synchronized", "private", "concurent", "singleton", "JAVA");
+            addClosedQuestion("Кой се грижи за непотребните обекти в Java?", "Garbage collector", "finalize()", "System.cleaner()", "free()", "JAVA");
+            addClosedQuestion("С коя ключова дума се създава нов референтен тип в Java?", "new", "create", "build", "make", "JAVA");
+
+            addClosedQuestion("Коя е столицата на Канада?", "Отава", "Торонто", "Вашингтон", "София", "География");
+            addClosedQuestion("Коя е столицата на Русия?", "Москва", "Минск", "Вашингтон", "София", "География");
+            addClosedQuestion("Коя е столицата на България?", "София", "Торонто", "Лондон", "Пловдив", "География");
+            addClosedQuestion("Коя е столицата на Аглия?", "Лондон", "Торонто", "Париж", "София", "География");
+            addClosedQuestion("На кой полуостров е разположена България?", "Балкански", "Арабски", "Пиринейски", "Апенински", "География");
+            addClosedQuestion("Коя е най-източната точка на България?", "нос Шабла", "нос Емине", "устието на река Тимок", "връх Вейката", "География");
+            addOpenQuestion("Колко е висок връх Мусала?", "География");
+            isPopulated = true;
+        }
+
+
     }
 
 

@@ -19,10 +19,11 @@ public class CategoriesDataSource implements DBConstants {
 
     private SQLiteDatabase readableDB = null;
     private SQLiteDatabase writableDB = null;
-
+    Context context;
     public CategoriesDataSource(Context context) {
         readableDB = DBHelper.getInstance(context).getPooledReadableDB();
         writableDB = DBHelper.getInstance(context).getPooledWritableDB();
+        this.context = context;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
@@ -63,6 +64,18 @@ public class CategoriesDataSource implements DBConstants {
 
         res.moveToNext();
         return res.getString(res.getColumnIndex(CATEGORY_NAME));
+    }
+
+    //test purposes
+    static boolean isPopulated = false;
+    public void populateCategories()
+    {
+        if (!isPopulated) {
+            CategoriesDataSource cds = new CategoriesDataSource(context);
+            cds.insertCategory("JAVA");
+            cds.insertCategory("География");
+            isPopulated= true;
+        }
     }
 
 }

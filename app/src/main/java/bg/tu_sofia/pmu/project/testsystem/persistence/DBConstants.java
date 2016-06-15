@@ -113,6 +113,9 @@ public interface DBConstants {
             " FROM " + RESULTS_TABLE +
             " WHERE " + RESULT_USER_ID + "=?";
 
+    // Testing purposes
+    public static String INSER_QUESTIONS = "INSERT INTO QUESTIONS VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
 
 
 

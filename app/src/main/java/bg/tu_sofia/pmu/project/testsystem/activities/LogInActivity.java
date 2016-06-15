@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import bg.tu_sofia.pmu.project.testsystem.R;
+import bg.tu_sofia.pmu.project.testsystem.persistence.DBHelper;
 import bg.tu_sofia.pmu.project.testsystem.persistence.datasources.UsersDataSource;
 import bg.tu_sofia.pmu.project.testsystem.persistence.model.User;
 import bg.tu_sofia.pmu.project.testsystem.utils.CacheControler;
@@ -29,6 +30,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        DBHelper.getInstance(LogInActivity.this).populateDB();
         init();
 
     }
